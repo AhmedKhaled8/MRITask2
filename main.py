@@ -17,7 +17,8 @@ class ApplicationWindow(QtWidgets.QMainWindow):
         
     ##############  UI control lists  ##############
         self.imageViews = [self.ui.graphicsView , self.ui.graphicsView_2 ] 
-        
+        self.legend = [0, 0, 0] # guard for legend overaddition
+
         for image in self.imageViews : ## hide unwanted options
             image.ui.histogram.hide()
             image.ui.roiBtn.hide()
@@ -108,20 +109,26 @@ class ApplicationWindow(QtWidgets.QMainWindow):
         self.axes1.plot(t[:1000], Mx[:1000], 'r', label="No Noise")
         self.axes1.plot(t[:1000], MxPositive[:1000], 'b', label="Positive Noise")
         self.axes1.plot(t[:1000], MxNegative[:1000], 'y', label="Negative Noise")
-        self.axes1.legend()
+        if self.legend[0] == 0:
+            self.axes1.legend()
+            self.legend[0] += 1
 
 
         self.axes2 = self.ui.graphicsView2.figure.add_subplot(111,title="$M_y/M_o$ vs time",xlabel="time",ylabel="$M_y/M_o$")
         self.axes2.plot(t[:1000], My[:1000], 'r', label="No Noise")
         self.axes2.plot(t[:1000], MyPositive[:1000], 'b', label="Positive Noise")
         self.axes2.plot(t[:1000], MyNegative[:1000], 'y', label="Negative Noise")
-        self.axes2.legend()
+        if self.legend[1] == 0:
+            self.axes2.legend()
+            self.legend[1] = 1
 
         self.axes3 = self.ui.graphicsView3.figure.add_subplot(111,title="$M_{xy}$ in X-Y Plane",xlabel="$M_x/M_o$",ylabel="$M_y/M_o$")
         self.axes3.plot(Mx, My, 'r', label="No Noise")
         self.axes3.plot(MxPositive, MyPositive, 'b', label="Positive Noise")
         self.axes3.plot(MxNegative, MyNegative, 'y', label="Negative Noise")
-        self.axes3.legend()
+        if self.legend[2] == 0:
+            self.axes3.legend()
+            self.legend[2] = 1
 
         self.axes1.figure.canvas.draw()
         self.axes2.figure.canvas.draw()
