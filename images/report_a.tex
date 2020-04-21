@@ -1,5 +1,5 @@
 \documentclass[18pt]{extarticle}
-\usepackage[margin=0.5in]{geometry}
+
 \usepackage{amsmath}
 \usepackage{titlesec}
 \usepackage{ifthen}
@@ -9,6 +9,24 @@
 
 \usepackage{listings}
 \usepackage{color}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{subcaption}
+\usepackage[english]{babel}
+\usepackage[export]{adjustbox}
+\usepackage{enumerate}
+\usepackage[left=3.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage{lineno}
+\usepackage{cite}
+\usepackage{acronym}
+\renewcommand{\baselinestretch}{1.5}
 
 \definecolor{dkgreen}{rgb}{0,0.6,0}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
@@ -35,9 +53,43 @@
 
 %opening
 \begin{document}
+\begin{center}
+	\begin{LARGE}			\bf{Programming Assignment \#2\\}
+	\end{LARGE}
+	\vspace*{30pt}
+	
+	
+	\vspace{20pt}
+	\textbf{Medical Equipment II\\}
+	\vspace{40pt}
+	
+	\textbf{
+		Ahmed Khaled Mohamed Salah \hspace*{10mm} S.1  B.N.4\\
+		Eslam Khaled Korany \hspace*{26mm} S.1  B.N.13\\
+		Bassam Moustafa Mahmoud \hspace*{15mm} S.1  B.N.22\\
+		Tarek Allam Ibrahim \hspace*{26mm} S.2  B.N.2\\
+	}
+		\vspace{30pt}
+
+	\vspace{30pt}
+	\textit{Under the kind guidance of}\\
+	\textbf{Dr. Inas Ahmed Yassine
+	}\\
+	
+	
+	\vspace{20pt}
+	
+	
+	
+
+\end{center}
+\pagebreak
+
+
 
 \section{Non-Uniformity Effect on the Trajectory}
-The non-uniformity of B causes changes in the Larmor frequency $\omega$ of the molecules as
+\textbf{Note: Please make sure of installing pyqt (command in dependencies.txt) to be able to run the program.}
+\\The non-uniformity of B causes changes in the Larmor frequency $\omega$ of the molecules as
 \begin{equation*}
 \omega = \gamma * B
 \end{equation*}
@@ -55,13 +107,13 @@ A change to the Larmor frequency $\delta \omega$ occurs
 \begin{equation*}
 \delta \omega = \pm 1 * \gamma
 \end{equation*}
-For protons, $\gamma = 26.75 * 10^7 T^{-1}.s^{-1}$
+For protons, $\gamma = 42 MHz.T^{-1}$
 \newline
 \begin{lstlisting}
 B = 1.5
 BPositive = 2.5
 BNegative = 0.5
-gyroRatio = 30
+gyroRatio = 42
 w = gyroRatio * B
 wPositive = gyroRatio * BPositive
 wNegative = gyroRatio * BNegative
@@ -101,17 +153,15 @@ My = np.exp(-1*t/T2)*np.cos(omega)
 MyPositive = np.exp(-1*t/T2)*np.cos(omegaPositive)
 MyNegative = np.exp(-1*t/T2)*np.cos(omegaNegative)
 \end{lstlisting}
-
-\pagebreak
 Plotting the results of $M_x$, $M_y$ and $M_{xy}$ with the non-uniformity effects for each, we get these results,
 \begin{center}
-	\includegraphics[width=15cm, height=8cm]{mx}
+	\includegraphics[width=15cm, height=7cm]{mx}
 \end{center}
 \begin{center}
-	\includegraphics[width=15cm, height=8cm]{my}
+	\includegraphics[width=15cm, height=7cm]{my}
 \end{center}
 \begin{center}
-	\includegraphics[width=15cm, height=8cm]{mxy}
+	\includegraphics[width=15cm, height=10cm]{mxy}
 \end{center}
 
 \section{K-space}
