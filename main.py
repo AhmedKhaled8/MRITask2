@@ -14,6 +14,7 @@ class ApplicationWindow(QtWidgets.QMainWindow):
         super(ApplicationWindow, self).__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+        self.setFixedSize(1500, 930)
         
     ##############  UI control lists  ##############
         self.imageViews = [self.ui.graphicsView , self.ui.graphicsView_2 ] 
